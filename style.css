@@ -1,3 +1,7 @@
+:root {
+    --square-side: 3vw;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,10 +9,22 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: calc(var(--square-side)*16);
+    height: calc(var(--square-side)*16);
+}
+
 .square-div {
-    width: 6.25vw;
-    height: 6.25vw;
+    width: var(--square-side);
+    height: var(--square-side);
     border: 1px solid black;
+}
+
+.bg-color-change {
+    background-color: aqua;
 }
 
 .row-cont {

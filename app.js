@@ -1,5 +1,6 @@
+let mainCont = document.querySelector(".main-cont");
+
 let createGrid = async () => {
-    let mainCont = document.querySelector(".main-cont");
     for (let row = 0; row < 16 ;row++) {
         let rowCont = document.createElement("div");
         rowCont.classList.add("row-cont");
@@ -14,3 +15,6 @@ let createGrid = async () => {
 }
 
 createGrid();
+mainCont.addEventListener("mouseover",(e)=>{
+    e.target.classList.add("bg-color-change");
+})
