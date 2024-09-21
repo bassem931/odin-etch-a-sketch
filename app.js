@@ -23,10 +23,14 @@ let randomizeColor = () => {
         let red = Math.floor(Math.random()*255);
         let blue = Math.floor(Math.random()*255);
         let green = Math.floor(Math.random()*255);
-        let color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
-        e.target.style.backgroundColor = color;
+        let color = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
+        if (e.target.style.backgroundColor !== "#000000") {
+            e.target.style.backgroundColor = color;
+        }
     })
 }
+
+
 
 let getSideLength = () =>{
     let root = document.querySelector(':root');

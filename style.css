@@ -2,6 +2,11 @@
     --square-side: 2.5vw;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 html,
 body {
     margin: 0;
@@ -32,12 +37,12 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 .etch-cont {
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 40vw;
     height: 40vw;
 }
@@ -55,4 +60,13 @@ body {
     left: 50vw;
     width: 5px;
     background-color: black;
+}
+
+.title-cont {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5vh;
 }
