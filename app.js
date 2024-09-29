@@ -4,11 +4,11 @@ let etchCont = document.querySelector(".etch-cont");
 let createGrid = (side_length) => {
     let gridCont = document.createElement("div");
     gridCont.classList.add("grid-cont")
-    for (let row = 0; row < side_length ;row++) {
+    for (let row = 0; row < side_length; row++) {
         let rowCont = document.createElement("div");
         rowCont.classList.add("row-cont");
         gridCont.append(rowCont);
-        for (let i = 0; i < side_length;i++) {
+        for (let i = 0; i < side_length; i++) {
             let squareDiv = document.createElement("div");
             squareDiv.classList.add("square-div");
             rowCont.append(squareDiv);
@@ -18,11 +18,11 @@ let createGrid = (side_length) => {
 }
 
 let randomizeColor = () => {
-    etchCont.addEventListener("mouseover",(e)=>{
+    etchCont.addEventListener("mouseover", (e) => {
         //randomize from 0 to 1677215 (complete hex range 000000 to FFFFFF)
-        let red = Math.floor(Math.random()*255);
-        let blue = Math.floor(Math.random()*255);
-        let green = Math.floor(Math.random()*255);
+        let red = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
         let color = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
         if (e.target.style.backgroundColor !== "#000000") {
             e.target.style.backgroundColor = color;
@@ -30,31 +30,46 @@ let randomizeColor = () => {
     })
 }
 
+let addSliderValue = () => {
+
+    let lengthSlider = document.querySelector("#gridSize");
+
+    lengthSlider.addEventListener("input", (ev) => {
+        let length = document.querySelector("#gridSize").value
+        document.querySelector(".gridSizeLabel").textContent = length;
+    });
+}
 
 
-let getSideLength = () =>{
+
+let getSideLength = () => {
     let root = document.querySelector(':root');
     let popupForm = document.querySelector(".popup-form");
-    
-    popupForm.addEventListener("submit",(ev)=>{
-        ev.preventDefault();
-        let length = window.prompt("enter the number of squares per side for the new grid");
 
-        while(Number.isNaN(parseInt(length))){
-            console.log(Number.isNaN(parseInt(length)));
-            length = window.prompt("enter the number of squares per side for the new grid");
-        }
-        
-        root.style.setProperty('--square-side',`${40/length}vw`);
+
+
+    popupForm.addEventListener("submit", (ev) => {
+        ev.preventDefault();
+        // let length = window.prompt("enter the number of squares per side for the new grid");
+
+        // while (Number.isNaN(parseInt(length))) {
+        //     length = window.prompt("enter the number of squares per side for the new grid");
+        // }
+
+
+        let length = document.querySelector("#gridSize").value;
+
+        root.style.setProperty('--square-side', `${40 / length}vw`);
         document.querySelector(".grid-cont").remove();
         createGrid(length);
     })
-    
+
 }
 
 function initializeEtch() {
     createGrid(16);
     randomizeColor();
+    addSliderValue();
     getSideLength();
 }
 

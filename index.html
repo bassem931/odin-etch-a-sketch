@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch A Sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
@@ -15,6 +15,8 @@
             <h1>Etch a sketch</h1>
             <div class="length-popup-cont">
                 <form action="" class="popup-form">
+                    <input type="range" id="gridSize" name="gridSize" min="1" max="100" value="16" />
+                    <label for="gridSize" class="gridSizeLabel">16</label>
                     <button type="submit">reset</button>
                 </form>
             </div>
